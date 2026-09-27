@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>حفلة يارا🌸</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700;800&display=swap" rel="stylesheet">
+
+    <script src="https://cdn.jsdelivr.net/npm/js-confetti@latest/dist/js-confetti.browser.js"></script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <section id="page1" class="page active-page">
+        <h1 style="color: #c2185b; font-size: clamp(30px, 6vw, 45px);">أهلاً بكِ 🌸</h1>
+        <p>مستعدة لتغيير المود؟</p>
+        <button class="btn" style="display:inline-block;" onclick="startRain()">تفضلي بالدخول 🐈</button>
+        <button class="btn" id="next1" onclick="nextPage(1)">التالي ➡️</button>
+    </section>
+
+    <section id="page2" class="page">
+        <h2 style="color: #4a148c;">دورّي على البسة عشان تفتحي الباب!</h2>
+        <div id="cafe-container" class="glass-box" style="padding:0;">
+            <img src="cat-head.png" id="hidden-cat" onmouseover="playMeow(0.5)" onclick="foundCat()" alt="Hidden Cat">
+        </div>
+        <button class="btn" id="next2" onclick="nextPage(2)">كشفتيها! التالي ➡️</button>
+    </section>
+
+    <section id="page3" class="page">
+        <div class="glass-box" style="width: 90%; max-width: 550px;">
+            <h2 style="color: #e65100;">صندوق التنفيس 🗑️</h2>
+            <p>اكتبي هون كل شيء مزعلك:</p>
+            <textarea id="complaint" placeholder="اكتبي هنا..."></textarea>
+        </div>
+        <button class="btn" id="btn-shrink" onclick="shrinkAndNext()">فرمته الحزن.. التالي ➡️</button>
+    </section>
+
+    <section id="page4" class="page">
+        <h2 style="color: #3e2723;">استراحة قهوة ☕</h2>
+        <p>اضغطي عالكاسة لتشربيها وتروقي..</p>
+        <img src="paper-cup.png" id="coffee-cup" onclick="spillCoffee()" alt="Coffee Cup">
+        <button class="btn" id="next4" onclick="nextPage(4)">خربت الاستراحة.. التالي ➡️</button>
+    </section>
+
+    <section id="page5" class="page">
+        <h2 style="color: #3e2723;">معلش، كاسة ثانية بتعوض ☕</h2>
+        <div id="thief-container" class="glass-box">
+            <img src="coffee-top.png" id="top-coffee" alt="Top Coffee">
+            <img src="cat-paw.png" id="cat-paw" alt="Cat Paw">
+            <button class="btn" id="start-steal-btn" style="display:inline-block; margin-top:50px; font-size: 16px; padding: 10px 20px;" onclick="stealCoffee()">اضغطي لأخذ القهوة</button>
+        </div>
+        <button class="btn" id="next5" onclick="nextPage(5)">القهوة مش مكتوبالك.. التالي ➡️</button>
+    </section>
+
+    <section id="page6" class="page">
+        <h2 style="color: #c2185b;">اضغطي على البسس المكشرة عشان تراضيها:</h2>
+        <div id="game-area" class="glass-box" style="padding: 0;">
+            <div id="targets">
+                <img src="cat-head.png" class="target-cat" onclick="shootRose(event, this)" alt="Target">
+                <img src="cat-head.png" class="target-cat" onclick="shootRose(event, this)" alt="Target">
+                <img src="cat-head.png" class="target-cat" onclick="shootRose(event, this)" alt="Target">
+                <img src="cat-head.png" class="target-cat" onclick="shootRose(event, this)" alt="Target">
+            </div>
+            <img src="cannon.png" id="cannon" alt="Cannon">
+        </div>
+        <button class="btn" id="next6" onclick="nextPage(6)">التالي ➡️</button>
+    </section>
+
+    <section id="page7" class="page">
+        <h2 style="color: #b71c1c; font-size: clamp(30px, 6vw, 45px);">FOR YOU 💐</h2>
+        <p>اضغطي لفتح الباقة:</p>
+        <img src="bouquet.png" id="bouquet" onclick="shrinkBouquet()" alt="Bouquet">
+        <h3 id="bouquet-msg" style="display:none; color: #d81b60; margin-top:20px; font-weight:900;">الميزانية خلصت 😂</h3>
+        <button class="btn" id="next7" onclick="nextPage(7)">استعدي للصدمة.. التالي ➡️</button>
+    </section>
+
+    <section id="page8" class="page">
+        <div id="scanner-box" class="glass-box">
+            <h2 id="status-text" style="color: #0d47a1;">فحص تأثير الزعل 🔍</h2>
+            <lottie-player id="scan-cat" src="https://lottie.host/a4a21e01-48d2-4b6c-95f0-0804df30ea4f/K742nXIZdP.json" background="transparent" speed="1" style="width: 100%; max-width: 250px; margin: auto; display: none;" loop autoplay></lottie-player>
+            
+            <button class="btn" id="start-scan-btn" style="display:inline-block; margin-top:20px;" onclick="startScanner()">بدء الفحص</button>
+            <button class="btn" id="smile-btn" onclick="sheSmiled()">خلص هيني ابتسمت والله 🌸</button>
+        </div>
+        <button class="btn" id="next8" onclick="nextPage(8)">آخر محطة.. التالي ➡️</button>
+    </section>
+
+    <section id="page9" class="page" style="background-color: #ffffff;">
+        <lottie-player src="https://lottie.host/acc84744-0e2d-4e1a-aadc-247a62dcb66e/HcUCt91EQT.json" class="lottie-decor lottie-top" background="transparent" speed="1" loop="true" autoplay="true"></lottie-player>
+        <lottie-player src="https://lottie.host/f93191dd-825b-4106-8e24-824d623cb9d7/6pAvWkbdzC.json" class="lottie-decor lottie-side1" background="transparent" speed="1" loop="true" autoplay="true"></lottie-player>
+        <lottie-player src="https://lottie.host/595db74b-3c90-4bec-b5d4-4fa46564d635/YdT9cGyR4D.json" class="lottie-decor lottie-side2" background="transparent" speed="1" loop="true" autoplay="true"></lottie-player>
+
+        <h2 style="position:relative; z-index:10; color:#ff4081; font-size: clamp(28px, 6vw, 40px); margin-bottom: 25px;">رسالة لكِ.. اضحكي دايماً ✨</h2>
+        
+        <div class="video-wrapper">
+            <!-- تم تعديل مسار الفيديو هنا ليتطابق مع الاسم الجديد -->
+            <video src="video.mp4" controls class="vid mobile-vid" playsinline></video>
+            <video src="video.mp4" controls class="vid desktop-vid" playsinline></video>
+            <video src="video.mp4" controls class="vid desktop-vid" playsinline></video>
+        </div>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>
